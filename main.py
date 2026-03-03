@@ -11,11 +11,15 @@ def main() -> None:
 
     for player_name, player_data in players.items():
         race = player_data.get("race")
-        skills = race.get("skills")
         guild = player_data.get("guild")
 
-        race_model = create_race(race)
-        create_skills(skills, race_model)
+        if race:
+            skills = race.get("skills")
+            race_model = create_race(race)
+            create_skills(skills, race_model)
+        else:
+            race_model = None
+
         guild_model = create_guild(guild)
 
         Player.objects.create(
