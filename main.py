@@ -16,7 +16,8 @@ def main() -> None:
         if race:
             skills = race.get("skills")
             race_model = create_race(race)
-            create_skills(skills, race_model)
+            if skills:
+                create_skills(skills, race_model)
         else:
             race_model = None
 
